@@ -1,11 +1,11 @@
 #include "main.h"
 
-FluidCube *FluidCubeCreate(int size, int diffusion, int viscosity, float dt)
+FluidCube *FluidCubeCreate(int diffusion, int viscosity, float dt)
 {
     FluidCube *cube = malloc(sizeof(*cube));
-   int N = SCREEN_SIZE;
+   int N = CUBE_SIZE;
 
-    cube->size = size;
+    cube->size = CUBE_SIZE;
     cube->dt = dt;
     cube->diff = diffusion;
     cube->visc = viscosity;
@@ -44,7 +44,6 @@ void FluidCubeAddDensity(FluidCube *cube, int x, int y, float amount)
 
 void FluidCubeAddVelocity(FluidCube *cube, int x, int y, float amountX, float amountY)
 {
-    int N = cube->size;
     int index = IX(x, y);
 
     cube->Vx[index] += amountX;
